@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Token Launch Radar</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="app.css">
+  <script src="../data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to radar</a>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand"><span class="radar-mark" aria-hidden="true"></span><div><p class="eyebrow">Research terminal / 01</p><h1>Token Launch Radar</h1></div></div>
+      <div class="snapshot"><span class="status-dot"></span><span id="snapshot-label">Sealed snapshot</span><span id="version" class="tag"></span></div>
+    </div>
+    <div id="stats" class="stats" aria-label="Board statistics"></div>
+  </header>
+  <main id="main" class="shell" tabindex="-1">
+    <section class="intro"><div><p class="eyebrow amber">Find the signal before the token.</p><h2>Today's protocols.<br><span>Tomorrow's possibilities.</span></h2><p class="muted">A snapshot-driven view of pre-token DeFi. Compare implied valuations,<br class="desktop-break"> inspect the assumptions, and build a repeatable farm plan.</p></div><div class="seal"><span class="seal-orbit" aria-hidden="true">◎</span><span>SEALED DATA<br><strong>Open methodology</strong></span></div></section>
+    <section class="panel methodology" aria-labelledby="model-title">
+      <div class="model-copy"><p class="eyebrow">01 / The methodology</p><h3 id="model-title">How the value is built</h3><p>TVL × category multiple × growth × maturity × breadth</p><p class="muted small">Category multiples reflect tokenized peers per dollar of TVL. Growth uses the 7-day change, clamped to −50%…150%. Listing age shapes maturity; chain count shapes breadth. The low–high band is <strong>0.5× to 1.8×</strong> implied value.</p><p class="small muted">Bridges, wrappers, exchange products and versioned duplicates are excluded. These are model estimates, not market prices.</p></div>
+      <div class="sandbox"><div class="section-line"><p class="eyebrow amber">Model sandbox</p><button id="reset-model" class="text-button" type="button">Reset defaults ↺</button></div><label class="slider-label" for="value-scale">Value scale <output id="scale-output" for="value-scale">1.00×</output></label><input id="value-scale" type="range" min="0.5" max="2" step="0.05" value="1"><div class="range-ends"><span>0.50×</span><span>2.00×</span></div><label class="slider-label" for="growth-weight">Growth weight <output id="growth-output" for="growth-weight">0.60</output></label><input id="growth-weight" type="range" min="0" max="1.2" step="0.05" value="0.6"><div class="range-ends"><span>0.00</span><span>1.20</span></div><p id="sandbox-status" class="small muted" role="status">Baseline model · adjust to explore</p></div>
+    </section>
+    <section id="listing" aria-labelledby="listing-title">
+      <div class="board-heading"><div><p class="eyebrow">02 / The opportunity set</p><h3 id="listing-title">Pre-token radar</h3></div><div class="view-toggle" role="group" aria-label="Market view"><button id="show-board" type="button" aria-pressed="true">Pre-token radar</button><button id="show-live" type="button" aria-pressed="false">Live tokens <span id="live-count"></span></button></div></div>
+      <p id="view-description" class="muted small">Ranked by implied token value. Select a protocol to inspect its model and farm plan.</p>
+      <div id="controls" class="controls"><label class="search-label"><span>Search protocols</span><input id="search" type="search" placeholder="Search name or slug…" autocomplete="off"></label><label><span>Category</span><select id="category"><option value="">All categories</option></select></label><label><span>Chain</span><select id="chain"><option value="">All chains</option></select></label><label class="check-label"><input id="watchlist" type="checkbox"><span>Watchlist only</span></label><label><span>Sort by</span><select id="sort"><option value="implied">Implied value</option><option value="tvl">TVL</option><option value="change">7d change</option><option value="age">Age</option><option value="name">Name</option></select></label></div>
+      <div class="table-meta"><span id="result-count" role="status"></span><span id="table-hint">USD · highest implied value first</span></div>
+      <div class="panel table-wrap" tabindex="0" role="region" aria-label="Protocol table"><table id="protocol-table"><thead id="table-head"></thead><tbody id="table-body"></tbody></table><div id="empty" class="empty" hidden><span>◎</span><h3>No protocols in this orbit</h3><p class="muted">Try a different search or broaden your filters.</p><button id="clear-filters" type="button">Clear filters</button></div></div>
+    </section>
+    <section id="detail" hidden aria-labelledby="detail-title"></section>
+    <p id="load-error" class="panel empty" hidden>Snapshot data could not be loaded. Run main.ts and open dashboard/index.html from the generated output directory.</p>
+    <noscript><p class="panel empty">Enable JavaScript to explore the local snapshot.</p></noscript>
+  </main>
+  <footer class="shell footer"><span class="footer-brand">◎ TOKEN LAUNCH RADAR</span><p id="provenance">Sealed snapshot. Nothing is fetched live.</p><span class="tag">OFFLINE BY DESIGN</span></footer>
+</body>
+</html>
